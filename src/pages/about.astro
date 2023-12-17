@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = '私について';
+
+const identity = {
+  name: 'yskm',
+  country: 'Japan',
+  ocupation: 'Web Developer',
+  hobbies: ['Gaming', 'Cooking', 'Programming'],
+}
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro", "React"]
+const skillColor = 'navy'
+const fontWeight = 'bold';
+const textCase = 'uppercase';
+---
+<BaseLayout pageTitle={pageTitle}>
+  <style define:vars={{skillColor, fontWeight, textCase}}>
+    .skill {
+      color: var(--skillColor);
+      font-weight: var(--fontWeight);
+      text-transform: var(--textCase);
+    }
+  </style>
+  <h2>...そして私の新しいAstroサイトについて</h2>
+  <ul>
+    <li>私の名前は{identity.name}</li>
+    <li>国籍は{identity.country}、職業は{identity.ocupation}です。</li>
+    {identity.hobbies.length >= 2 &&
+      <li>趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
+    }
+  </ul>
+  <p>私のスキルは以下の通りです。</p>
+  <ul>
+    {skills.map(skill => {
+      return <li class="skill">{skill}</li>
+    })}
+  </ul>
+</BaseLayout>

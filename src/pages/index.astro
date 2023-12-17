@@ -1,0 +1,9 @@
+---
+import BasLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.tsx";
+const pageTitle = "Home Page";
+---
+<BasLayout pageTitle={pageTitle}>
+  <h2>わたしのすばらしいブログのサブタイトル</h2>
+  <Greeting client:load messages={["Hello", "Bonjour", "Hola", "Ciao"]} />
+</BasLayout>
